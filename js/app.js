@@ -139,6 +139,10 @@ function initializePage() {
     updateCartCount();
     renderCart();
     
+    if (currentPage === 'home') {
+        setRandomHeroVideo();
+    }
+    
     switch (currentPage) {
         case 'coffee':
             renderCoffeeMenu();
@@ -154,13 +158,32 @@ function initializePage() {
     }
 }
 
+// ===== Hero Video Function =====
+function setRandomHeroVideo() {
+    const videos = [
+        'landing-page-video-1.webp',
+        'landing-page-video-2.webp',
+        'landing-page-video-3.webp',
+        'landing-page-video-4.webp',
+        'landing-page-video-5.webp',
+        'landing-page-video-6.webp'
+    ];
+    
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    const heroVideo = document.querySelector('.hero-video');
+    
+    if (heroVideo) {
+        heroVideo.style.backgroundImage = `url('assets/${randomVideo}')`;
+    }
+}
+
 // ===== Render Functions =====
 function renderCoffeeMenu() {
     if (!elements.coffeeMenu) return;
     
     elements.coffeeMenu.innerHTML = coffeeProducts.map(product => `
         <div class="menu-card" data-product-id="${product.id}" onclick="openProductModal('${product.id}')">
-            <div class="menu-card-image">${product.emoji}</div>
+            <div class="menu-card-image"><img src="assets/${product.id}.jpg" alt="${product.name}"></div>
             <div class="menu-card-content">
                 <h3 class="menu-card-name">${product.name}</h3>
                 <p class="menu-card-description">${product.description}</p>
@@ -178,7 +201,7 @@ function renderFlowerMenu() {
     
     elements.flowerMenu.innerHTML = flowerProducts.map(product => `
         <div class="menu-card" data-product-id="${product.id}" onclick="openProductModal('${product.id}')">
-            <div class="menu-card-image">${product.emoji}</div>
+            <div class="menu-card-image"><img src="assets/${product.id}.jpg" alt="${product.name}"></div>
             <div class="menu-card-content">
                 <h3 class="menu-card-name">${product.name}</h3>
                 <p class="menu-card-description">${product.description}</p>
@@ -215,7 +238,7 @@ function renderCart() {
         return `
             <div class="cart-item" data-item-id="${item.id}">
                 <div class="cart-item-image">
-                    <span>${product.emoji}</span>
+                    <img src="assets/${product.id}.jpg" alt="${product.name}">
                 </div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${product.name}${sizeLabel}</div>
@@ -268,7 +291,7 @@ function openProductModal(productId) {
     currentProduct = getProductById(productId);
     if (!currentProduct || !elements.productModal) return;
     
-    elements.productModalImage.textContent = currentProduct.emoji;
+    elements.productModalImage.innerHTML = `<img src="assets/${currentProduct.id}.jpg" alt="${currentProduct.name}">`;
     elements.productModalName.textContent = currentProduct.name;
     elements.productModalDescription.textContent = currentProduct.description;
     elements.productModalPrice.textContent = `$${currentProduct.price.toFixed(2)}`;
@@ -605,7 +628,7 @@ function renderOrderSummary() {
         
         return `
             <div class="order-summary-item">
-                <span>${product.emoji} ${product.name}${sizeLabel} × ${item.quantity}</span>
+                <span>${product.name}${sizeLabel} × ${item.quantity}</span>
                 <span>$${itemTotal.toFixed(2)}</span>
             </div>
         `;
