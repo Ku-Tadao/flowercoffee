@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Location | FlowerCoffee</title>
+    <meta name="description" content="Visit FlowerCoffee - find our location, hours, and contact information.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body data-page="contact">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🌸☕</span>
+                <span class="logo-text">FlowerCoffee</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coffee.html">Coffee</a></li>
+                <li><a href="flowers.html">Flowers</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+                <span class="cart-icon">🛒</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="coffee.html">Coffee</a></li>
+            <li><a href="flowers.html">Flowers</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header contact-header">
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <div class="page-header-content">
+                <h1>Contact & Location</h1>
+                <p>Visit us or get in touch. We'd love to hear from you!</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Content -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-card-icon">📍</div>
+                        <h3>Our Location</h3>
+                        <p>123 Blossom Street</p>
+                        <p>Downtown District</p>
+                        <p>City, State 12345</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-icon">🕐</div>
+                        <h3>Opening Hours</h3>
+                        <div class="hours-list">
+                            <div class="hours-row">
+                                <span>Monday - Friday</span>
+                                <span>7:00 AM - 7:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span>Saturday - Sunday</span>
+                                <span>8:00 AM - 6:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-icon">📞</div>
+                        <h3>Get in Touch</h3>
+                        <p><strong>Phone:</strong> (555) 123-4567</p>
+                        <p><strong>Email:</strong> hello@flowercoffee.com</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-icon">💡</div>
+                        <h3>Preorder Info</h3>
+                        <p><strong>Coffee:</strong> Same-day pickup available</p>
+                        <p><strong>Flowers:</strong> Order at least 1 day in advance</p>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section">
+                    <div class="map-placeholder">
+                        <div class="map-content">
+                            <span class="map-icon">🗺️</span>
+                            <h3>Find Us Downtown</h3>
+                            <p>Located on the corner of Blossom Street and Main Avenue, right next to the central park.</p>
+                            <div class="map-directions">
+                                <p><strong>By Transit:</strong> Blue Line, Blossom Station (2 min walk)</p>
+                                <p><strong>By Car:</strong> Street parking available on Blossom St</p>
+                            </div>
+                            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                Open in Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-form-wrapper">
+                <h2>Send Us a Message</h2>
+                <p>Have a question or special request? We'd love to hear from you.</p>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Name <span class="required">*</span></label>
+                            <input type="text" id="contactName" name="contactName" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email <span class="required">*</span></label>
+                            <input type="email" id="contactEmail" name="contactEmail" required placeholder="Your email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Subject</label>
+                        <select id="contactSubject" name="contactSubject">
+                            <option value="general">General Inquiry</option>
+                            <option value="order">Order Question</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="special">Special Request</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message <span class="required">*</span></label>
+                        <textarea id="contactMessage" name="contactMessage" rows="5" required placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🌸☕</span>
+                    <span class="logo-text">FlowerCoffee</span>
+                    <p>Fresh blooms & perfect brews</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="coffee.html">Coffee</a>
+                    <a href="flowers.html">Flowers</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-hours">
+                    <h4>Hours</h4>
+                    <p>Mon-Fri: 7am - 7pm</p>
+                    <p>Sat-Sun: 8am - 6pm</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FlowerCoffee. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar (for consistency) -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" id="closeCart" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be inserted by JavaScript -->
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

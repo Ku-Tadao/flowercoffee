@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Menu | FlowerCoffee</title>
+    <meta name="description" content="Order your favorite coffee for same-day pickup at FlowerCoffee.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body data-page="coffee">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🌸☕</span>
+                <span class="logo-text">FlowerCoffee</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coffee.html" class="active">Coffee</a></li>
+                <li><a href="flowers.html">Flowers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+                <span class="cart-icon">🛒</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="coffee.html" class="active">Coffee</a></li>
+            <li><a href="flowers.html">Flowers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header coffee-header">
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <div class="page-header-content">
+                <span class="page-tag">☕ Same-Day Pickup Available</span>
+                <h1>Coffee Menu</h1>
+                <p>Classic drinks crafted with care. Select your drink, customize it, and pick it up today.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Earliest Pickup Indicator -->
+    <section class="pickup-indicator">
+        <div class="container">
+            <div class="pickup-badge">
+                <span class="pickup-icon">⏰</span>
+                <span>Earliest pickup: <strong id="earliestPickup">Loading...</strong></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coffee Menu -->
+    <section class="menu-section">
+        <div class="container">
+            <div class="menu-grid" id="coffeeMenu">
+                <!-- Coffee items will be inserted by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🌸☕</span>
+                    <span class="logo-text">FlowerCoffee</span>
+                    <p>Fresh blooms & perfect brews</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="coffee.html">Coffee</a>
+                    <a href="flowers.html">Flowers</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-hours">
+                    <h4>Hours</h4>
+                    <p>Mon-Fri: 7am - 7pm</p>
+                    <p>Sat-Sun: 8am - 6pm</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FlowerCoffee. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal product-modal" id="productModal">
+        <div class="modal-header">
+            <h3 id="productModalTitle">Customize Your Drink</h3>
+            <button class="close-modal" id="closeProductModal" aria-label="Close modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="product-modal-content">
+                <div class="product-modal-image" id="productModalImage">☕</div>
+                <div class="product-modal-details">
+                    <h2 id="productModalName">Coffee Name</h2>
+                    <p id="productModalDescription">Description</p>
+                    <div class="product-modal-price">
+                        <span>Price:</span>
+                        <strong id="productModalPrice">$0.00</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <form id="coffeeOrderForm">
+                <input type="hidden" id="selectedProductId">
+                
+                <div class="form-section">
+                    <h4>Select Size</h4>
+                    <div class="size-options" id="sizeOptions">
+                        <label class="size-option">
+                            <input type="radio" name="size" value="small" data-price-modifier="0">
+                            <span class="size-card">
+                                <span class="size-name">Small</span>
+                                <span class="size-volume">8 oz</span>
+                                <span class="size-price">+$0.00</span>
+                            </span>
+                        </label>
+                        <label class="size-option">
+                            <input type="radio" name="size" value="medium" data-price-modifier="0.50" checked>
+                            <span class="size-card">
+                                <span class="size-name">Medium</span>
+                                <span class="size-volume">12 oz</span>
+                                <span class="size-price">+$0.50</span>
+                            </span>
+                        </label>
+                        <label class="size-option">
+                            <input type="radio" name="size" value="large" data-price-modifier="1.00">
+                            <span class="size-card">
+                                <span class="size-name">Large</span>
+                                <span class="size-volume">16 oz</span>
+                                <span class="size-price">+$1.00</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4>Special Notes (optional)</h4>
+                    <div class="quick-notes">
+                        <button type="button" class="quick-note-btn" data-note="Extra shot">Extra shot</button>
+                        <button type="button" class="quick-note-btn" data-note="Less milk">Less milk</button>
+                        <button type="button" class="quick-note-btn" data-note="Extra hot">Extra hot</button>
+                        <button type="button" class="quick-note-btn" data-note="Iced">Iced</button>
+                        <button type="button" class="quick-note-btn" data-note="Oat milk">Oat milk</button>
+                        <button type="button" class="quick-note-btn" data-note="Almond milk">Almond milk</button>
+                    </div>
+                    <textarea id="coffeeNotes" name="coffeeNotes" rows="2" placeholder="Any other requests..."></textarea>
+                </div>
+
+                <div class="form-section order-total-section">
+                    <div class="order-total">
+                        <span>Total:</span>
+                        <strong id="orderTotal">$0.00</strong>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Add to Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" id="closeCart" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be inserted by JavaScript -->
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-header">
+            <h3 id="modalTitle">Complete Your Order</h3>
+            <button class="close-modal" id="closeModal" aria-label="Close modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="orderForm">
+                <div class="form-section">
+                    <h4>Order Summary</h4>
+                    <div class="order-summary" id="orderSummary">
+                        <!-- Order summary will be inserted by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h4>Your Details</h4>
+                    <div class="form-group">
+                        <label for="customerName">Name <span class="required">*</span></label>
+                        <input type="text" id="customerName" name="customerName" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone">Phone <span class="required">*</span></label>
+                        <input type="tel" id="customerPhone" name="customerPhone" required placeholder="Your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerEmail">Email (optional)</label>
+                        <input type="email" id="customerEmail" name="customerEmail" placeholder="Your email">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4>Pickup Details</h4>
+                    <div class="pickup-location">
+                        <span class="info-icon">📍</span>
+                        <div>
+                            <strong>FlowerCoffee</strong>
+                            <p>123 Blossom Street, Downtown District</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pickupDate">Date <span class="required">*</span></label>
+                            <input type="date" id="pickupDate" name="pickupDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickupTime">Time <span class="required">*</span></label>
+                            <select id="pickupTime" name="pickupTime" required>
+                                <option value="">Select time</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="form-hint" id="pickupHint">☕ Same-day pickup available for coffee orders.</p>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal confirmation-modal" id="confirmationModal">
+        <div class="confirmation-content">
+            <div class="confirmation-icon">✓</div>
+            <h3>Order Confirmed!</h3>
+            <p id="confirmationMessage">Thank you for your order. We'll have it ready for pickup.</p>
+            <div class="confirmation-details" id="confirmationDetails">
+                <!-- Details will be inserted by JavaScript -->
+            </div>
+            <button class="btn btn-primary" id="confirmationClose">Done</button>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
